@@ -1,0 +1,23 @@
+EXEC = PJ
+CC = g++
+CFLAGS = -c -Wall
+
+
+$(EXEC)    : Main.o Graph.o Edge.o Vertex.o Dijkstra.o 
+    $(CC) -o $(EXEC) Main.o Graph.o Edge.o Vertex.o Dijkstra.o 
+
+Main.o: Main.cpp Vertex.h Graph.h Edge.h
+	$(CC) $(CFLAGS) Main.cpp
+
+Edge.o: Edge.cpp Edge.h 
+	$(CC) $(CFLAGS) Edge.cpp
+
+Vertex.o: Vertex.cpp Vertex.h 
+	$(CC) $(CFLAGS) Vertex.cpp
+
+Graph.o: Graph.cpp Graph.h 
+	$(CC) $(CFLAGS) Graph.cpp
+
+
+clean    :
+    rm *.o $(EXEC)
